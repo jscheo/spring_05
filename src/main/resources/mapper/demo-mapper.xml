@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 반드시 작성! -->
+<mapper namespace="Demo">
+    <!--repository에서 설정한 이름과 같게 하고 뒤에오는 것의 위치를 알려준다.
+        String integer값을 줬으면 그냥 타입클래스명만 작성-->
+    <insert id="save" parameterType="com.icia.demo.dto.DemoDTO">
+        insert into demo_table(name, age)
+        <!-- values( # {필드명}-->
+            values(#{name}, #{age})
+    </insert>
+    <!-- 리스트에 담길 타입을 써준다. 값을 가져올때는 resultType를 씀-->
+    <select id="findAll" resultType="com.icia.demo.dto.DemoDTO">
+        select * from demo_table
+    </select>
+
+    <select id="findById" parameterType="Long" resultType="com.icia.demo.dto.DemoDTO">
+        select * from demo_table where id = #{id}
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
